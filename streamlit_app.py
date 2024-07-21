@@ -4,7 +4,7 @@ import pandas as pd
 # Function to validate login credentials
 def validate_login(username, password):
     users = pd.read_csv('users.csv')
-    if any((users['username'] == username) & (users['password'] == password)):
+    if any((users['username'].str.lower() == username) & (users['password'].str.lower() == password)):
         return True
     return False
 
@@ -59,12 +59,12 @@ def main():
 
     if not st.session_state['logged_in']:
         st.title("Login Page")
-        username = st.text_input("Username")
-        password = st.text_input("Password", type='password')
+        username = st.text_input("Username (Full Name)")
+        password = st.text_input("Password (Roll: e.g. KCE078BCT001)", type='password')
         login_button = st.button("Login")
 
         if login_button:
-            if validate_login(username, password):
+            if validate_login(username.lower(), password.lower()):
                 st.session_state['logged_in'] = True
                 st.session_state['username'] = username
                 st.success("Login successful!")
