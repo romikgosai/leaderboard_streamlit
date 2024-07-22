@@ -12,28 +12,46 @@ def validate_login(username, password):
 def input_form():
     st.title("Input Details")
     category = st.selectbox("Select Category", ["Classification", "Regression"])
+    algorithm = st.text_input("Algorithm Used")
     if category == "Classification":
         score_label = "F1 Score"
         csv_file = 'classification_leaderboard.csv'
+        training_accuracy = st.number_input("Training Accuracy", min_value=0.0, max_value=1.0, step=0.01)
+        validation_accuracy = st.number_input("Validation Accuracy", min_value=0.0, max_value=1.0, step=0.01)
+        precision = st.number_input("Precision", min_value=0.0, max_value=1.0, step=0.01)
+        recall = st.number_input("Recall", min_value=0.0, max_value=1.0, step=0.01)
+        f1_score = st.number_input(score_label, min_value=0.0, max_value=1.0, step=0.01)
+        submit_button = st.button("Submit")
+        if submit_button:
+                leaderboard = pd.read_csv(csv_file)
+                new_data = pd.DataFrame({
+                    "username": [st.session_state['username']],
+                    "Algorithm Used": [algorithm],
+                    "Training Accuracy": [training_accuracy],
+                    "Validation Accuracy": [validation_accuracy],
+                    "Precision": [precision],
+                    "Recall": [recall],
+                    "F1 score": [f1_score]
+                })
+                leaderboard = pd.concat([leaderboard, new_data])
+                leaderboard.to_csv(csv_file, index=False)
+                st.success("Submitted successfully!")
     else:
         score_label = "R2 Score"
         csv_file = 'regression_leaderboard.csv'
-    score = st.number_input(score_label, min_value=0.0, max_value=1.0, step=0.01)
-    submit_button = st.button("Submit")
-    if submit_button:
-        if category and score >= 0:
-            # Append the data to the appropriate CSV file
+        training_loss = st.number_input("Training Loss (RMSE)", min_value=0.0, step=0.1)
+        validation_loss = st.number_input("Validation Loss (RMSE)", min_value=0.0, step=0.01)
+        r2_score = st.number_input(score_label, min_value=0.0, max_value=1.0, step=0.01)
+        submit_button = st.button("Submit")
+        if submit_button:
             leaderboard = pd.read_csv(csv_file)
-            if category == "Classification":
-                new_data = pd.DataFrame({
-                    "username": [st.session_state['username']],
-                    "F1 score": [score]
-                })
-            else:
-                new_data = pd.DataFrame({
-                    "username": [st.session_state['username']],
-                    "r2 score": [score]
-                })
+            new_data = pd.DataFrame({
+                "username": [st.session_state['username']],
+                "Algorithm Used": [algorithm],
+                "Training Loss": [training_loss],
+                "Validation Loss": [validation_loss],
+                "r2 score": [r2_score]
+            })
             leaderboard = pd.concat([leaderboard, new_data])
             leaderboard.to_csv(csv_file, index=False)
             st.success("Submitted successfully!")
