@@ -49,6 +49,13 @@ def show_leaderboard():
         leaderboard.reset_index(drop=True, inplace=True)
         leaderboard.index += 1
         st.table(leaderboard)
+        csv = convert_df(leaderboard)
+        st.download_button(
+            label="Download",
+            data=csv,
+            file_name="classification.csv",
+            mime="text/csv",
+        )
     else:
         csv_file = 'regression_leaderboard.csv'
         leaderboard = pd.read_csv(csv_file)
@@ -56,6 +63,18 @@ def show_leaderboard():
         leaderboard.reset_index(drop=True, inplace=True)
         leaderboard.index += 1
         st.table(leaderboard)
+        csv = convert_df(leaderboard)
+        st.download_button(
+            label="Download",
+            data=csv,
+            file_name="regression.csv",
+            mime="text/csv",
+        )
+
+@st.cache_data
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode("utf-8")
 
 # Main app
 def main():
