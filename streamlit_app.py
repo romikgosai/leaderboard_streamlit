@@ -63,10 +63,14 @@ def show_leaderboard():
     if category == "Classification":
         csv_file = 'classification_leaderboard.csv'
         leaderboard = pd.read_csv(csv_file)
-        leaderboard = leaderboard.sort_values(by='F1 score', ascending=False).reset_index(drop=True)
+        # leaderboard = leaderboard.sort_values(by='F1 score', ascending=False).reset_index(drop=True)
+        leaderboard = leaderboard.sort_values(by='F1 score', ascending=False).reset_index(drop=False)
         leaderboard.reset_index(drop=True, inplace=True)
         leaderboard.index += 1
-        st.table(leaderboard)
+        leaderboard['index'] +=1
+        leaderboard.set_index('index')
+        leaderboard = leaderboard.rename(columns={'index':'Rank'})
+        st.dataframe(leaderboard, hide_index=True)
         csv = convert_df(leaderboard)
         st.download_button(
             label="Download",
@@ -77,10 +81,13 @@ def show_leaderboard():
     else:
         csv_file = 'regression_leaderboard.csv'
         leaderboard = pd.read_csv(csv_file)
-        leaderboard = leaderboard.sort_values(by='r2 score', ascending=False)
+        leaderboard = leaderboard.sort_values(by='r2 score', ascending=False).reset_index(drop=False)
         leaderboard.reset_index(drop=True, inplace=True)
         leaderboard.index += 1
-        st.table(leaderboard)
+        leaderboard['index'] +=1
+        leaderboard.set_index('index')
+        leaderboard = leaderboard.rename(columns={'index':'Rank'})
+        st.dataframe(leaderboard, hide_index=True)
         csv = convert_df(leaderboard)
         st.download_button(
             label="Download",
