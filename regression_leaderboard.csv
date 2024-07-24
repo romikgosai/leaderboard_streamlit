@@ -1,2 +1,10 @@
 username,Algorithm Used,Training Loss,Validation Loss,r2 score
-
+Roheet Basukala,LinearRegression,0.634,0.634,0.38
+Manav Khatiwada,linear regression,0.600029,0.63,0.37
+Isha Bhattarai,,0.403714145,0,0.354564211
+Jenisha Shrestha,Linear regression,0.403714145,0.403714145,0.354564211
+Roheet Basukala,LinearRegression,0.63,0.63,0.35
+Uddav Rajbhandari,Linear Regression,0.4,0.39,0.35
+Jeeni Shrestha,Linear Regression,0.201955194,0.23,0.35
+Isha Bhattarai,Linear Regression,0.403714145,0.4,0.344854156
+Aashish Khatri,linear regression,0.642963,0.4134,0.33
