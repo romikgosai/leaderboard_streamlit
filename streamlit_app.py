@@ -70,7 +70,7 @@ def show_leaderboard():
         leaderboard['Rank'] = leaderboard.index
         leaderboard.head()
         st.dataframe(leaderboard, hide_index=True, column_order=("Rank","username","Algorithm Used", "Training Accuracy", "Validation Accuracy", "Precision", "Recall", "F1 score"))
-        csv = convert_df(pd.read_csv(csv_file))
+        csv = convert_df(leaderboard.iloc[:,:-1])
         st.download_button(
             label="Download",
             data=csv,
@@ -86,7 +86,7 @@ def show_leaderboard():
         leaderboard['Rank'] = leaderboard.index
         leaderboard.head()
         st.dataframe(leaderboard, hide_index=True, column_order=("Rank","username","Algorithm Used", "Training Loss", "Validation Loss", "r2 score"))
-        csv = convert_df(pd.read_csv(csv_file))
+        csv = convert_df(leaderboard.iloc[:,:-1])
         st.download_button(
             label="Download",
             data=csv,
@@ -97,7 +97,7 @@ def show_leaderboard():
 @st.cache_data
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv().encode("utf-8")
+    return df.to_csv(index = False).encode("utf-8")
 
 # Main app
 def main():
