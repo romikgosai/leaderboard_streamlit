@@ -1,10 +1,19 @@
 username,Algorithm Used,Training Loss,Validation Loss,r2 score
+Aashish Khatri,linear regression,0.18051,0.18,0.67
+Basanta Pokharel,Random Forest Regressor,0.2216,0.6,0.4304
+Aashrutya Chandra Pradhanannga,Decision Tree Regressor,0.3755,0.3755,0.4178
+Manav Khatiwada,KNeighborsRegressor,0.6,0.62,0.409
+Binit Shrestha,Random Forest Regressor,0.22,0.62,0.407
+Aashrutya Chandra Pradhanannga,Linear Regression,0.3919,0.39,0.3925
+Aashrutya Chandra Pradhanannga,KNeighboursRegressor,0.632,0.632,0.3807
 Roheet Basukala,LinearRegression,0.634,0.634,0.38
 Manav Khatiwada,linear regression,0.600029,0.63,0.37
-Isha Bhattarai,,0.403714145,0,0.354564211
+Isha Bhattarai,,0.403714145,0.0,0.354564211
 Jenisha Shrestha,Linear regression,0.403714145,0.403714145,0.354564211
 Roheet Basukala,LinearRegression,0.63,0.63,0.35
 Uddav Rajbhandari,Linear Regression,0.4,0.39,0.35
 Jeeni Shrestha,Linear Regression,0.201955194,0.23,0.35
+Swikar Basnet,Linear regression,0.5,0.4,0.35
 Isha Bhattarai,Linear Regression,0.403714145,0.4,0.344854156
 Aashish Khatri,linear regression,0.642963,0.4134,0.33
+Aashrutya Chandra Pradhanannga,Logistic Regression,0.5618,0.5618,0.129
