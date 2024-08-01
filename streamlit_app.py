@@ -115,6 +115,7 @@ def main():
                 st.session_state['logged_in'] = True
                 st.session_state['username'] = username
                 st.success("Login successful!")
+                st.rerun()
             else:
                 st.error("Invalid username or password")
     else:
@@ -124,7 +125,7 @@ def main():
 
         if logout_button:
             st.session_state['logged_in'] = False
-            st.experimental_rerun()
+            st.rerun()
 
         if page == "Input Details":
             input_form()
