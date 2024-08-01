@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import time
 
 # Function to validate login credentials
 def validate_login(username, password):
@@ -115,6 +116,7 @@ def main():
                 st.session_state['logged_in'] = True
                 st.session_state['username'] = username
                 st.success("Login successful!")
+                time.sleep(0.6)
                 st.rerun()
             else:
                 st.error("Invalid username or password")
