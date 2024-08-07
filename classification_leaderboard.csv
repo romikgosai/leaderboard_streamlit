@@ -1,5 +1,1 @@
 username,Algorithm Used,Training Accuracy,Validation Accuracy,Precision,Recall,F1 score
-Binit Shrestha,Logistic Regression ,0.88,0.86,0.84,0.86,0.85
-Binit Shrestha,Logistic Regression ,0.88,0.86,0.84,0.86,0.85
-Basanta Pokharel,Logistic Regression,0.8811,0.88125,0.86,0.88,0.77
-Aashrutya Chandra Pradhanannga,KNeighborsClassifier,0.5351,0.5311,0.4579,0.53511,0.478
